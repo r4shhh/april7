@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surprise!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('https://i.pinimg.com/736x/91/13/7c/91137c38e7bc7f0e2153b400923ce6ca.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: Arial, sans-serif;
+      color: #FFD700; /* Gold text for high contrast */
+      text-align: center;
+      overflow: hidden; /* Prevents scrollbars caused by animations */
+      height: 100vh; /* Ensures the body takes the full height of the viewport */
+      cursor: pointer; /* Indicates clickability */
+    }
+    .content {
+      position: relative;
+      z-index: 2; /* Keeps text above the balloons */
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-top: 20px;
+    }
+    p {
+      font-size: 1.2em;
+    }
+    /* Balloon Styles */
+    .balloon, .emoji {
+      position: absolute;
+      font-size: 1.5em;
+      width: 40px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ff69b4;
+      border-radius: 50%;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      animation: fly 2s ease-out forwards;
+    }
+    .emoji {
+      background-color: transparent;
+      box-shadow: none;
+    }
+    /* Balloon Animation */
+    @keyframes fly {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-300px) scale(0.8);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <h1>Surprise! 🎉</h1>
+    <p>Dear Nidhii ❤️,</p>
+    <p>Wishing you a magical birthday filled with love, laughter, and happiness! 🎂🎉</p>
+    <p>not enough? got another thing. click the screen anywhere.</p>
+  </div>
+
+  <script>
+    const emojis = ["🎀", "✨"]; // Emojis to include with balloons
+
+    function createElement(x, y, type) {
+      const element = document.createElement('div');
+      element.classList.add(type);
+      element.style.left = `${x}px`;
+      element.style.top = `${y}px`;
+
+      // For emojis, add a random emoji as the content
+      if (type === 'emoji') {
+        element.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        element.style.fontSize = `${Math.random() * 1.5 + 1}em`; // Random size
+      } else {
+        element.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`; // Random balloon color
+      }
+
+      document.body.appendChild(element);
+
+      // Remove element after animation
+      setTimeout(() => {
+        element.remove();
+      }, 2000);
+    }
+
+    function popBalloons(event) {
+      const screenX = event.clientX;
+      const screenY = event.clientY;
+
+      // Create 10 balloons and 5 emojis per click
+      for (let i = 0; i < 10; i++) {
+        const x = screenX + Math.random() * 100 - 50; // Spread elements around click
+        const y = screenY + Math.random() * 100 - 50;
+        createElement(x, y, 'balloon');
+      }
+      for (let i = 0; i < 5; i++) {
+        const x = screenX + Math.random() * 100 - 50;
+        const y = screenY + Math.random() * 100 - 50;
+        createElement(x, y, 'emoji');
+      }
+    }
+
+    // Ensure the entire screen is clickable
+    document.body.addEventListener('click', popBalloons);
+  </script>
+</body>
+</html>
+
+
+
+
+
