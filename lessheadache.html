@@ -4,64 +4,77 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Surprise!</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-image: url('https://i.pinimg.com/736x/91/13/7c/91137c38e7bc7f0e2153b400923ce6ca.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-attachment: fixed;
-      font-family: Arial, sans-serif;
-      color: #000000; /* Gold text for high contrast */
-      text-align: center;
-      overflow: hidden; /* Prevents scrollbars caused by animations */
-      height: 100vh; /* Ensures the body takes the full height of the viewport */
-      cursor: pointer; /* Indicates clickability */
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-image: url('https://i.pinimg.com/736x/e8/34/53/e83453aab08196dea9f65df3daccede4.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    color: #FFD700; /* Gold text for high contrast */
+    text-align: center;
+    overflow: hidden; /* Prevents scrollbars caused by animations */
+    height: 100vh; /* Ensures the body takes the full height of the viewport */
+    cursor: pointer; /* Indicates clickability */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
+    touch-action: manipulation; /* Improve touch responsiveness */
+  }
+
+  *:focus {
+    outline: none; /* Remove focus outline */
+  }
+
+  .content {
+    position: relative;
+    z-index: 2; /* Keeps text above the balloons */
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2em;
+    margin-top: 20px;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+
+  /* Balloon Styles */
+  .balloon, .emoji {
+    position: absolute;
+    font-size: 1.5em;
+    width: 40px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ff69b4;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: fly 2s ease-out forwards;
+  }
+
+  .emoji {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  /* Balloon Animation */
+  @keyframes fly {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
     }
-    .content {
-      position: relative;
-      z-index: 2; /* Keeps text above the balloons */
-      padding: 20px;
+    100% {
+      transform: translateY(-300px) scale(0.8);
+      opacity: 0;
     }
-    h1 {
-      font-size: 2em;
-      margin-top: 20px;
-    }
-    p {
-      font-size: 1.2em;
-    }
-    /* Balloon Styles */
-    .balloon, .emoji {
-      position: absolute;
-      font-size: 1.5em;
-      width: 40px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #ff69b4;
-      border-radius: 50%;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      animation: fly 2s ease-out forwards;
-    }
-    .emoji {
-      background-color: transparent;
-      box-shadow: none;
-    }
-    /* Balloon Animation */
-    @keyframes fly {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-300px) scale(0.8);
-        opacity: 0;
-      }
-    }
-  </style>
+  }
+</style>
+
 </head>
 <body>
   <div class="content">
